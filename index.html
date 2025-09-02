@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements in Competitions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .achievements {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .icon {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .gold { color: gold; }
+    .silver { color: silver; }
+    .bronze { color: #cd7f32; }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .desc {
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* Confetti animation */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: red;
+      top: -10px;
+      animation: fall 3s linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏆 My Competition Achievements</h1>
+
+  <div class="achievements">
+    <div class="card" onclick="launchConfetti(event)">
+      <div class="icon gold">🥇</div>
+      <div class="title">First Place - Coding Contest</div>
+      <div class="desc">Secured 1st rank in National Level Coding Competition.</div>
+    </div>
+
+    <div class="card" onclick="launchConfetti(event)">
+      <div class="icon silver">🥈</div>
+      <div class="title">Second Place - Hackathon</div>
+      <div class="desc">Achieved 2nd place in 24-hour Hackathon event.</div>
+    </div>
+
+    <div class="card" onclick="launchConfetti(event)">
+      <div class="icon bronze">🥉</div>
+      <div class="title">Third Place - Quiz Competition</div>
+      <div class="desc">Won 3rd prize in Inter-College Quiz Competition.</div>
+    </div>
+
+    <div class="card" onclick="launchConfetti(event)">
+      <div class="icon">🏅</div>
+      <div class="title">Participation Award</div>
+      <div class="desc">Recognized for active participation in Tech Fest 2025.</div>
+    </div>
+  </div>
+
+  <script>
+    function launchConfetti(event) {
+      for (let i = 0; i < 20; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        document.body.appendChild(confetti);
+
+        let colors = ["#f39c12", "#e74c3c", "#2ecc71", "#3498db", "#9b59b6"];
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+        confetti.style.left = (event.clientX + Math.random() * 100 - 50) + "px";
+        confetti.style.top = event.clientY + "px";
+
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 3000);
+      }
+    }
+  </script>
+
+</body>
+</html>
